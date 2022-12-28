@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Events</title>
+</head>
+
+<body>
+  <div id="wrapper">
+    <button>Button 1</button>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores ipsum earum iure? Dolor cum voluptatibus et quidem omnis alias, eveniet iusto, earum qui distinctio, velit aperiam fuga molestias consequatur provident?
+    Numquam mollitia necessitatibus, recusandae ex dolorem facilis fugiat nam veniam iste alias quia voluptas ea natus doloribus! Eius nisi odio debitis soluta reprehenderit expedita optio temporibus impedit, omnis perspiciatis necessitatibus!</p>
+  </div>
+  <script>
+    const btn = document.querySelector("button")
+
+    // btn.onclick = alert("Hello JS")
+
+    // btn.onclick = printSomething; 
+    //Here we are attaching an click event on button, and stating an event handler function 'printSomething'
+
+
+    // btn.onmouseover = printSomething
+    // btn.onmouseout = printSomethingElse
+
+    // function printSomething(){
+    //   console.log("Hello JS")
+    // }
+
+    // function printSomethingElse(){
+    //   console.log("Bye JS")
+    // }
+
+
+    // function (x = 2, y = 3) {
+    //   console.log(x + y)
+    // }
+
+    // sum(10)
+
+
+    //ANONYMOUS FUNCTIONS (IIFE: Immidiately Invoked Function Expressions)
+
+    // btn.onclick = function () {
+
+    //   console.log("Hello JS")
+    // }
+
+
+    // btn.onclick = function (e) {
+    //   e.target.innerHTML = 'Button 1 Clicked'
+    // }
+
+
+    // btn.onclick = function(e){
+    //   e.target.style.color = '#fff'
+    //   e.target.style.backgroundColor = '#000'
+    //   e.target.style.border = '3px solid'
+    //   e.target.style.borderRadius = '5px'
+    // }
+
+    // btn.onclick = function(e){
+    //   e.target.style.cssText = 'color: #fff; background-color: #000; border: 3px solid #000; boder-radius: 5px; padding: 5px'
+    // }
+
+
+
+
+    // btn.onclick = () => {
+    //   console.log("Hello World")
+    // }
+
+
+    // btn.onclick = (e) => {
+    //   e.target.style.cssText = 'background-color: #000'
+    // }
+
+
+
+    //The only difference between anonymous functions and arrow functions is the scope of this keyword
+
+    // const para = document.querySelector("p")
+
+    // para.onmouseover = (event) => {
+    //   this.style.cssText = 'background-color: #f00; color: #fff'
+    // }
+
+    // para.onmouseout = (event) => {
+    //   this.style.cssText = 'background-color: #fff; color: #000'
+    // }
+
+  </script>
+</body>
+
+</html>
