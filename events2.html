@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>More about Events</title>
+  <style>
+    #wrapper{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 3rem auto;
+      width: 60%;
+    }
+    .tabs{
+      margin-bottom: 1rem;
+    }
+    a.active {
+      background-color: #3b5998;
+      text-decoration: none;
+      color: #fff;
+      padding: 5px;
+    }
+    .con{
+      border: 1px solid;
+      display: none;
+    }
+    .con.active{
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <!-- <p>Hello Javascript</p>
+    <p>Hello React</p>
+    <p>Hello Node</p>
+    <p>Hello EmberJS</p> -->
+
+    <div class="tabs">
+      <a href="" class="active">Hello Javascript</a>
+      <a href="">Hello React</a>
+      <a href="">Hello Node</a>
+      <a href="">Hello EmberJS</a>
+    </div>
+
+    <div class="content">
+      <div class="con active">
+        <h2>Javascript</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga sed optio ea perferendis mollitia nesciunt dicta sint quas! Fugit odio numquam eveniet obcaecati, corrupti id molestiae alias quia aut ipsam?</p>
+      </div>
+      <div class="con">
+        <h2>React</h2>
+        <p>Ad neque cupiditate laboriosam dignissimos ducimus. Nulla voluptate praesentium cum velit recusandae harum dolores iure perferendis nesciunt? Maxime quidem labore deserunt rerum dolore iusto inventore sint aspernatur nulla doloribus? Repellendus.</p>
+      </div>
+      <div class="con">
+        <h2>Node</h2>
+        <p>Quae illo explicabo voluptatibus cupiditate dolore minima quo ullam dolorum, officia distinctio odit tempore excepturi saepe laudantium maxime, adipisci maiores soluta eius. At iste aperiam, facilis fugiat expedita et doloremque!</p>
+      </div>
+      <div class="con">
+        <h2>Ember JS</h2>
+        <p>Velit consequatur, pariatur reprehenderit, est commodi at modi incidunt amet odit soluta autem! Voluptas neque, sunt quia voluptates excepturi soluta nostrum consequuntur accusantium omnis doloremque ea modi tempora unde officiis.</p>
+      </div>
+    </div>
+
+
+
+
+    <h2></h2>
+
+    <!-- <button>Change it</button> -->
+  </div>
+
+  <script>
+    // const btn = document.querySelector("button")
+    // const p = document.querySelector("p")
+    // const h2 = document.querySelector("h2")
+    // btn.onclick = function (e) {
+    //   e.target.innerHTML = 'Button 1 Clicked'
+    //   h2.innerHTML = p.innerHTML;
+    //   p.innerHTML = '';
+    // }
+
+    //WE CANNOT ACCESS ALL THE ELEMENTS OF A COLLECTION DIRECTLY. WE HAVE TO DO IT ONE BY ONE
+
+
+    const para = document.querySelectorAll("a")
+    // console.log(para)
+    const heading = document.querySelector("h2")
+    // para.onclick = () => {
+    //   heading.innerHTML = para.innerHTML
+    // }
+
+    // para[0].onclick = 
+    // para[1].onclick = 
+    // para[2].onclick = 
+    // para[3].onclick = 
+
+
+    // for(let i=0;i<para.length;i++){
+    //   para[i].onclick = (e) => {
+    //     e.preventDefault()
+    //     heading.innerHTML = para[i].innerHTML
+    //   }
+    // }
+
+
+    //classList: add, remove, toggle, contains
+
+    const anchors = document.querySelectorAll("a")
+    const content=document.querySelectorAll(".con")
+    for (let i = 0; i < anchors.length; i++) {
+      anchors[i].onclick = (e) => {
+        e.preventDefault()
+        for (let j = 0; j < anchors.length; j++) {
+          if (anchors[j].classList.contains("active")) {
+            anchors[j].classList.remove("active")
+            content[j].classList.remove("active")
+          }
+        }
+        anchors[i].classList.add('active')
+        content[i].classList.add('active')  
+      }
+    }
+
+
+
+
+  </script>
+</body>
+
+</html>
