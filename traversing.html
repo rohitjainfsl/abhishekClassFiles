@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traversing</title>
+  <style>
+    a {
+      display: none;
+    }
+
+    #wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .box {
+      width: 31%;
+      margin: 1%;
+    }
+
+    .box .heading h1 {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .box .heading h1 span {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div class="box">
+      <div class="heading">
+        <h1>
+          Box 1
+          <span>+</span>
+        </h1>
+      </div>
+      <div class="content">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non rerum sunt facilis eius unde repellat, laborum
+          tempore natus modi enim in repellendus aliquam. Saepe dolor consequuntur laudantium minus ab eos?
+          Quod aperiam maiores inventore, corrupti voluptate natus impedit ut nobis quasi rerum ipsum accusamus
+          cupiditate animi exercitationem, tempora libero. Aliquid ducimus saepe ut incidunt similique repudiandae modi
+          dolor voluptatum vitae?</p>
+      </div>
+      <a href="">SHOW</a>
+    </div>
+
+    <div class="box">
+      <div class="heading">
+        <h1>
+          Box 2
+          <span>+</span>
+        </h1>
+      </div>
+      <div class="content">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non rerum sunt facilis eius unde repellat, laborum
+          tempore natus modi enim in repellendus aliquam. Saepe dolor consequuntur laudantium minus ab eos?
+          Quod aperiam maiores inventore, corrupti voluptate natus impedit ut nobis quasi rerum ipsum accusamus
+          cupiditate animi exercitationem, tempora libero. Aliquid ducimus saepe ut incidunt similique repudiandae modi
+          dolor voluptatum vitae?</p>
+      </div>
+      <a href="">SHOW</a>
+    </div>
+
+    <div class="box">
+      <div class="heading">
+        <h1>
+          Box 3
+          <span>+</span>
+        </h1>
+      </div>
+      <div class="content">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non rerum sunt facilis eius unde repellat, laborum
+          tempore natus modi enim in repellendus aliquam. Saepe dolor consequuntur laudantium minus ab eos?
+          Quod aperiam maiores inventore, corrupti voluptate natus impedit ut nobis quasi rerum ipsum accusamus
+          cupiditate animi exercitationem, tempora libero. Aliquid ducimus saepe ut incidunt similique repudiandae modi
+          dolor voluptatum vitae?</p>
+      </div>
+      <a href="">SHOW</a>
+    </div>
+  </div>
+  <script>
+    // Traversing: moving up or down in the DOM is called traversing
+
+    //parentElement, nextElementSibling, previousElementSibling, children
+
+
+    const plus = document.querySelectorAll("span")
+    const minus = document.querySelectorAll("a")
+    // for (let i = 0; i < plus.length; i++){
+    //   plus[i].onclick = (e) => {
+    //     e.target.parentElement.parentElement.parentElement.style.border = '3px solid'
+    //   }
+    // }
+
+    for (let i = 0; i < plus.length; i++) {
+      plus[i].onclick = (e) => {
+
+        const box = plus[i].parentElement.parentElement.parentElement
+        for (let j = 0; j < box.children.length; j++) {
+          if (j === box.children.length - 1)
+            box.children[j].style.display = "block"
+          else
+            box.children[j].style.display = "none"
+        }
+
+        // e.target.parentElement.parentElement.style.display = 'none'
+        // e.target.parentElement.parentElement.nextElementSibling.style.display = 'none'
+        // e.target.parentElement.parentElement.parentElement.children[2].style.display = 'block'
+      }
+    }
+    for (let i = 0; i < minus.length; i++) {
+      minus[i].onclick = (e) => {
+        e.preventDefault()
+
+        const box = plus[i].parentElement.parentElement.parentElement
+        for (let j = 0; j < box.children.length; j++) {
+          if (j === box.children.length - 1)
+            box.children[j].style.display = "none"
+          else
+            box.children[j].style.display = "block"
+        }
+
+
+        // e.target.style.display = 'none'
+        // e.target.parentElement.children[0].style.display = 'block'
+        // e.target.parentElement.children[1].style.display = 'block'
+        // console.log(e.target.parentElement.children)
+        // e.target.parentElement.parentElement.parentElement.children[2].style.display = 'block'
+      }
+    }
+
+
+
+  </script>
+</body>
+
+</html>
