@@ -85,13 +85,21 @@
 
 
     let numbers = [23, 65, 123, 7, 2, 8, 3, 9, 10, 11]
-
-    // for(let i=numbers.length-1;i>=0;i--)
-    // {
-    //   document.write(numbers[i]);
-    //   if(i >= 1)
-    //     document.write(',');
-    // }
+    
+//    numbers.forEach((number,index) => {
+//        document.write(number+" ");        
+//    })
+//      
+//     numbers.forEach((number,index) => {
+//         document.write(number+'<br>');
+//     })
+//
+//     for(let i=numbers.length-1;i>=0;i--)
+//     {
+//       document.write(numbers[i]);
+//       if(i >= 1)
+//         document.write(',');
+//     }
 
     // for(let i=0;i<numbers.length;i++){
     //   document.write(numbers[i] + " ")
@@ -104,7 +112,11 @@
     // Higher Order Functions: functions which take a function as argument and return an array
 
     //map, filter, reduce
-
+    
+//    let results=numbers.map((number,index) => {
+//        return number + ' '
+//    })
+//    document.write(results);
 
     // let result = numbers.map((element, index) => {
     //   return element + " "
@@ -132,6 +144,11 @@
     //   if (element % 2 === 0)
     //     return element
     // }))
+      
+//      console.log(numbers.filter((element) => {
+//          if(element % 2 ===0)
+//              return element;
+//      }))
 
 
 
@@ -181,6 +198,48 @@
     //Write the definition of a function
     //-which checks if the array in input is a square, if not, it will return with an error
     //if the array is a square array, return the sum of its diagonals
+      
+    let sqArr = [
+       [1,2,3,11],
+       [4,5,6,12],
+       [7,8,9,13],
+       [7,8,9,14]
+     ]
+    abhishek(sqArr)
+      
+    function abhishek(sqArr){
+        let rowLength=sqArr.length;
+        let total=0;
+        let checkSquare='yes';
+        let columnLength=sqArr.length-1;
+        for(let i=0; i< sqArr.length; i++)
+        {
+            colLength=sqArr[i].length;
+            if(rowLength != colLength)
+            {
+                checkSquare='no'
+                break;
+            }
+            else
+            {
+                for(let j=0; j< colLength ; j++)
+                {
+                    if(j===i)
+                        total=total+sqArr[i][j];
+                }
+                if(sqArr[i][columnLength])
+                {
+                    total=total+sqArr[i][columnLength];
+                    columnLength--;
+                }
+                
+            }
+        }
+        if(checkSquare=='no')
+            document.write('Not a square');
+        else
+            document.write(total);
+    }
 
 
 
