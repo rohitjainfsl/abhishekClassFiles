@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objects</title>
+</head>
+
+<body>
+  <div id="wrapper">
+    <input type="text" placeholder="Type a letter">
+  </div>
+  <script>
+
+    // const countries = ["India", "america", "Bangladesh", 'France', 'china', 'Ireland', 'Afghanistan', 'Bhutan']
+
+
+    // const inp = document.querySelector("input")
+
+    // inp.onkeyup = () => {
+    //   const letterToSearch = inp.value.toLowerCase()
+    //   const para = document.createElement("p")
+
+    //   for (let i = 0; i < countries.length - 1; i++) {
+    //     const firstLetter = countries[i].split('')[0].toLowerCase()
+    //     if (firstLetter === letterToSearch) {
+    //       para.innerHTML = para.innerHTML + countries[i]
+    //     }
+    //   }
+    //   document.querySelector("#wrapper").appendChild(para)
+    // }
+
+
+    // let names = ['Ram', 'Sharma', 'Seeta', 'Kapoor']
+
+    // names.forEach(function(name, index){
+    //   document.write(name + " ")
+    // })
+
+
+
+    //Object: collection of key value pairs
+
+    // let person = {} //Object Literal
+
+    // let person = new Object()
+
+    // let person = Object.create()
+
+
+    let person = {
+      firstname: 'Abhishek',
+      lastname: 'Jain',
+      age: 30,
+      profession: 'Full Stack Developer',
+      isMarried: true,
+      phone: [1234567890, 0987654321]
+    }
+
+
+    // console.log(person)
+
+    // document.write(person)
+
+    // console.log(person.length) //undefined
+
+
+    //TO PRINT VALUES FROM OBJECT, WE HAVE 2 APPROACHES:
+    //ARRAY NOTATION
+    // console.log(person["firstname"])
+    // document.write(person["lastname"])
+
+
+    //DOT NOTATION
+    // console.log(person.firstname)
+    // console.log(person.lastname)
+
+    // const property = "firstname"
+
+    // console.log(person[property])
+
+
+    // for (let x in person) {
+    //   document.write(x + " :: " + person[x] + "<br>")
+    // }
+
+    //  arrayLength = Object.keys(person).length;
+    //  let reverseArray=Object.keys(person).reverse();
+    //  console.log(reverseArray);
+    //  for(let j=0;j<reverseArray.length;j++)
+    //  {
+    //   document.write(reverseArray[j] +' : '+person[reverseArray[j]]+'<br>');
+    //  }
+
+
+    // console.log(person.length) //undefined
+
+    //  console.log(Object.keys(person))
+
+    // console.log(Object.entries(person).length)
+
+
+
+    const countries = ["India", "america", "Bangladesh", 'France', 'china', 'Ireland', 'Afghanistan', 'Bhutan']
+
+    // ['I', 'A', 'B', 'F', 'C']
+    // let arr=[];
+    // countries.forEach(element => {
+    //   console.log(element.charAt(0).toUpperCase())
+    //   arr.push(element.charAt(0).toUpperCase())
+    // });
+    // document.write(arr)
+
+
+    // {
+    //   I:["India", "Ireland"],
+    //   A:["America", "Afghanistan"],
+    //   B:["Bangladesh", "Bhutan"],
+    //   F:["France"],
+    //   C:["China"],
+    // }
+
+
+    let arrKey;
+    let objectArr = {};
+    countries.forEach(element => {
+      arrKey = element.charAt(0).toUpperCase()
+      if (objectArr[arrKey])
+        objectArr[arrKey] = [objectArr[arrKey], element]
+      else
+        objectArr[arrKey] = element
+      //arr.push(element.charAt(0).toUpperCase())
+    });
+
+    for (let x in objectArr) {
+      document.write(x + " :: " + objectArr[x] + "<br>")
+    }
+
+
+
+
+    // INPUT
+
+    // const obj = {
+    //   name: 'Elon Musk',
+    //   address:{
+    //     personal: 'Seattle',
+    //     office:{
+    //       name: 'The Boring Company',
+    //       street: 'Unknown Street'
+    //     }
+    //   }
+    // }
+
+    // OUTPUT
+    
+    // {
+    //   name: 'Elon Musk',
+    //   address_personal: 'Seattle',
+    //   address_office_name: 'The Boring Company',
+    //   address_office_street: 'Unknown Street'
+    // }
+
+
+
+
+  </script>
+</body>
+
+</html>
