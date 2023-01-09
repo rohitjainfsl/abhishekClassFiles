@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objects</title>
+</head>
+
+<body>
+  <div id="wrapper"></div>
+
+  <script>
+    // let varilable = {
+    //   name: "Abhishek Jain",
+    //   address: {
+    //     city: 'Jaipur',
+    //     state: 'Rajasthan'
+    //   },
+    //   pincode: 302020
+    // };
+
+    // //console.log(varilable);
+    // for (x in varilable) {
+    //   if (typeof (varilable[x]) === 'object') {
+    //     for (y in varilable[x])
+    //       document.write(y + ":" + varilable[x][y] + "<br>");
+    //   }
+    //   else
+    //     document.write(x + ":" + varilable[x] + "<br>");
+    // }
+
+
+    // let students = [
+    //   {
+    //     name: 'Mohit',
+    //     address: {
+    //       city: 'Alwar',
+    //       state: 'Rajasthan',
+    //     }
+    //   },
+    //   {
+    //     name: 'Naman'
+    //   },
+    //   {
+    //     name: 'Bhawani',
+    //     address: {
+    //       city: 'Dausa',
+    //       state: 'Rajasthan',
+    //     }
+    //   }
+    // ]
+    // let arr = [];
+    // students.forEach((element, index) => {
+    //   let checkString = false;
+    //   for (x in element) {
+    //     console.log(Object.keys(element[x]))
+    //     if (typeof (element[x]) === 'object')
+    //       checkString = false;
+    //     else
+    //       checkString = true;
+    //   }
+
+    //   if (checkString === true)
+    //     arr.push('no');
+    //   else
+    //     arr.push('yes');
+    // })
+    // console.log(arr);
+    // students.forEach((element, index) => {
+    //   //console.log(element);
+    //   for (x in element) {
+    //     let checkString = false;
+    //     //console.log(Object.keys(element[x]))
+    //     if (typeof (element[x]) === 'object') {
+    //       for (y in element[x]) {
+    //         document.write(element[x][y] + " ");
+    //       }
+    //     }
+    //     else
+    //       if (arr[index] === 'no')
+    //         document.write("<br>" + element[x] + ' is from Undefined');
+    //       else
+    //         document.write("<br>" + element[x] + ' is from ');
+    //   }
+    // })
+
+
+
+
+    // Shallow Copy: both the values share the same memory location
+    // Deep Copy: both the values are allotted different memory locations
+
+
+    // let person = {
+    //   name:'Nitesh',
+    //   dob: '1990-01-01'
+    // }
+
+    // // let person2 = person; //shallow copy
+
+
+    // // let person2 = Object.create(person); //Deep Copy
+
+    // let person2 = {...person} //Deep Copy
+
+    // person2.name = 'Abhishek'
+
+    // console.log(person.name)
+
+
+
+    let student = {
+      name: 'Bhawani',
+      address: {
+        city: 'Jaipur'
+      }
+    }
+
+    let student2 = { ...student }
+    student.name = 'Nitesh'
+    student.address.city = 'Dausa'
+
+    console.log(student2.name) //Bhawani
+    console.log(student2.address.city) //Jaipur
+
+
+
+    //RECURSION
+
+
+
+    function flatten (obj) {
+      let output = {};
+      for (const i in obj) {
+        if ((typeof obj[i]) === 'object') {
+          const temp = flatten(obj[i]);
+          for (const j in temp) { output[i + '_' + j] = temp[j]; }
+        }
+        else { output[i] = obj[i]; }
+      } return output;
+    };
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
