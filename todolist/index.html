@@ -30,23 +30,39 @@
   const toDo=document.querySelector("input");
   const button=document.querySelector("button");
   const toDoList=document.querySelector("ul");
+  let counter=1;
 
   button.onclick = (e) => {
     e.preventDefault();
     let inputValue = toDo.value;
+    console.log(toDo.getAttribute('rel'))
+    if(toDo.getAttribute('rel') !==null){
+      let idVal=toDo.getAttribute('rel')
+      document.getElementById(idVal).innerHTML=inputValue
+    }
+    else
+    {
     if(inputValue !=""){
 
       let li=document.createElement("li");
 
-      const tagArray=["span","a","a","a"]
-      const tagClass=["textMessage","remove","edit","cross"]
+    //   const tagArray=["span","a","a","a"]
+    //   const tagClass=["textMessage","remove","edit","cross"]
+    //   const tagValue=[toDo.value,"-","edit","X"]
 
-      tagArray.forEach(element,index)
+    //   tagArray.forEach(function(name, index){
+    //     let span=document.createElement(name);
+    //     span.className = tagClass.index;
+    //     span.innerHTML=tagValue.index;
+    //     li.appendChild(span);
+    // })
 
       let span=document.createElement("span");
       span.className = "textMessage";
+      span.id = counter;
       span.innerHTML=toDo.value;
       li.appendChild(span);
+      counter++;
 
       let removeIcon=document.createElement("a");
       removeIcon.className = "remove";
@@ -71,9 +87,11 @@
       }
       editIcon.onclick = (e) => {
         toDo.value=e.target.parentElement.children[0].innerHTML;
+        console.log(e.target.parentElement.children[0].getAttribute("id"));
+        toDo.setAttribute('rel',e.target.parentElement.children[0].getAttribute("id"));
       }
-
       toDoList.appendChild(li);
+    }
       toDo.value='';
     }
   }
