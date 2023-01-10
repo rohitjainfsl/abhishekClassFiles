@@ -26,3 +26,55 @@
   <script src="todolist.js" type="module"></script>
 </body>
 </html>
+<script>
+  const toDo=document.querySelector("input");
+  const button=document.querySelector("button");
+  const toDoList=document.querySelector("ul");
+
+  button.onclick = (e) => {
+    e.preventDefault();
+    let inputValue = toDo.value;
+    if(inputValue !=""){
+
+      let li=document.createElement("li");
+      let span=document.createElement("span");
+      span.innerHTML=toDo.value;
+      li.appendChild(span);
+
+      let removeIcon=document.createElement("a");
+      removeIcon.className = "remove";
+      removeIcon.innerHTML='-'
+
+      let editIcon=document.createElement("a");
+      editIcon.className = "edit";
+      editIcon.innerHTML='edit'
+
+      let crossIcon=document.createElement("a");
+      crossIcon.className = "cross";
+      crossIcon.innerHTML='X'
+
+      li.appendChild(removeIcon);
+      li.appendChild(editIcon);
+      li.appendChild(crossIcon);
+      removeIcon.onclick = (e) => {
+          e.target.parentElement.remove()
+      }
+      crossIcon.onclick = (e) => {
+          e.target.parentElement.className="strikediag"
+      }
+      editIcon.onclick = (e) => {
+        toDo.value=e.target.parentElement.children[0].innerHTML;
+      }
+
+      toDoList.appendChild(li);
+      toDo.value='';
+    }
+  }
+
+</script>
+<style>
+  a{cursor: pointer;font-size: 20px;margin-right: 20px;}
+  .strikediag {
+  background: linear-gradient(to left top, transparent 47.75%, currentColor 49.5%, currentColor 50.5%, transparent 52.25%);
+}
+</style>
