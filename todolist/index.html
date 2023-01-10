@@ -37,7 +37,14 @@
     if(inputValue !=""){
 
       let li=document.createElement("li");
+
+      const tagArray=["span","a","a","a"]
+      const tagClass=["textMessage","remove","edit","cross"]
+
+      tagArray.forEach(element,index)
+
       let span=document.createElement("span");
+      span.className = "textMessage";
       span.innerHTML=toDo.value;
       li.appendChild(span);
 
@@ -65,7 +72,7 @@
       editIcon.onclick = (e) => {
         toDo.value=e.target.parentElement.children[0].innerHTML;
       }
-        
+
       toDoList.appendChild(li);
       toDo.value='';
     }
