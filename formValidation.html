@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation</title>
+  <link rel="stylesheet" href="formValidation.css">
+</head>
+
+<body>
+  <div id="wrapper">
+    <form action="" method="post">
+      <div class="form-group">
+        <input type="text" id="name" placeholder="Name">
+        <span></span>
+      </div>
+      <div class="form-group">
+        <input type="text" id="phone" placeholder="Phone">
+        <span></span>
+      </div>
+      <div class="form-group">
+        <input type="text" id="email" placeholder="Email">
+        <span></span>
+      </div>
+      <div class="form-group">
+        <input type="radio" value="male" name="gen">Male
+        <input type="radio" value="female" name="gen">Female
+        <input type="radio" value="other" name="gen">Other
+        <span></span>
+      </div>
+      <div class="form-group">
+        <select name="" id="">
+          <option value="">Select Course</option>
+          <option value="js">JS</option>
+          <option value="react">React</option>
+          <option value="node">Node</option>
+          <option value="angular">Angular</option>
+          <option value="php">PHP</option>
+        </select>
+        <span></span>
+      </div>
+      <div class="form-group">
+        <textarea name="" placeholder="Address" id="" cols="30" rows="10"></textarea>
+        <span></span>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+  <script>
+    const form = document.querySelector("form")
+
+    form.onsubmit = (e) => {
+      e.preventDefault()
+
+      const nameExp = /^[a-zA-Z ]{3,20}$/
+      const phoneExp = /^[0-9]{10}$/
+      const emailExp = /^[a-zA-Z0-9\-\_\.]+\@[a-zA-Z0-9]+\.[a-zA-Z\.]{2,5}$/
+
+
+      // To Study more about Regex: https://www.regular-expressions.info/tutorial.html
+
+
+      const name = document.querySelector("#name")
+      const phone = document.querySelector("#phone")
+      const email = document.querySelector("#email")
+      const radios = document.querySelectorAll("input[type=radio]")
+      const select = document.querySelector("select")
+      const textarea = document.querySelector("textarea")
+
+      if (check(name, nameExp, 'Name must contain alphabets only')) {
+        if (check(phone, phoneExp, 'Phone must contain exact 10 numbers')) {
+          if (check(email, emailExp, 'Enter a valid email')) {
+            if (check2(radios, 'Select gender')) {
+              if(check3(select, 'Select Course')){
+                if(check3(textarea, 'Write your address')){
+                  //submit the form
+                  document.querySelector("form").submit()
+                }
+              }
+            }
+          }
+        }
+      }
+
+
+    }
+
+    function check(elem, regex, msg) {
+      if (elem.value.match(regex)) {
+        elem.nextElementSibling.innerHTML = ''
+        return true;
+      }
+      else {
+        elem.nextElementSibling.innerHTML = msg
+        elem.focus()
+        return false;
+      }
+    }
+
+
+
+    function check2(elements, msg) {
+      let selected = false;
+      elements.forEach((element) => {
+        if (element.checked === true)
+          selected = true
+      })
+
+      if (selected === false) {
+        elements[elements.length - 1].nextElementSibling.innerHTML = msg
+        return false;
+      }
+      else{
+        elements[elements.length - 1].nextElementSibling.innerHTML = ''
+        return true;
+      }
+
+    }
+
+
+
+    function check3(elem, msg){
+      if(elem.value === ''){
+        elem.nextElementSibling.innerHTML = msg;
+        return false;
+      }
+      else{
+        elem.nextElementSibling.innerHTML = '';
+        return true;
+      }
+    }
+
+  </script>
+</body>
+
+</html>
