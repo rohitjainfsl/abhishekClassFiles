@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="wrapper">
+    <div class="todolist">
+      <div class="top">
+        <h2>ToDo List</h2>
+        <form action="">
+          <input type="text" placeholder="Enter your task" required>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+      <div class="bottom">
+        <ul></ul>
+      </div>
+    </div>
+  </div>
+  <script src="todolist.js" type="module"></script>
+</body>
+</html>
+<script>
+  const toDo=document.querySelector("input");
+  const button=document.querySelector("button");
+  const toDoList=document.querySelector("ul");
+  let counter=1;
+
+  button.onclick = (e) => {
+    e.preventDefault();
+    let inputValue = toDo.value;
+    console.log(toDo.getAttribute('rel'))
+    if(toDo.getAttribute('rel') !==null){
+      let idVal=toDo.getAttribute('rel')
+      document.getElementById(idVal).innerHTML=inputValue
+    }
+    else
+    {
+    if(inputValue !=""){
+
+      let li=document.createElement("li");
+
+    //   const tagArray=["span","a","a","a"]
+    //   const tagClass=["textMessage","remove","edit","cross"]
+    //   const tagValue=[toDo.value,"-","edit","X"]
+
+    //   tagArray.forEach(function(name, index){
+    //     let span=document.createElement(name);
+    //     span.className = tagClass.index;
+    //     span.innerHTML=tagValue.index;
+    //     li.appendChild(span);
+    // })
+
+      let span=document.createElement("span");
+      span.className = "textMessage";
+      span.id = counter;
+      span.innerHTML=toDo.value;
+      li.appendChild(span);
+      counter++;
+
+      let removeIcon=document.createElement("a");
+      removeIcon.className = "remove";
+      removeIcon.innerHTML='-'
+
+      let editIcon=document.createElement("a");
+      editIcon.className = "edit";
+      editIcon.innerHTML='edit'
+
+      let crossIcon=document.createElement("a");
+      crossIcon.className = "cross";
+      crossIcon.innerHTML='X'
+
+      li.appendChild(removeIcon);
+      li.appendChild(editIcon);
+      li.appendChild(crossIcon);
+      removeIcon.onclick = (e) => {
+          e.target.parentElement.remove()
+      }
+      crossIcon.onclick = (e) => {
+          e.target.parentElement.className="strikediag"
+      }
+      editIcon.onclick = (e) => {
+        toDo.value=e.target.parentElement.children[0].innerHTML;
+        console.log(e.target.parentElement.children[0].getAttribute("id"));
+        toDo.setAttribute('rel',e.target.parentElement.children[0].getAttribute("id"));
+      }
+      toDoList.appendChild(li);
+    }
+      toDo.value='';
+    }
+  }
+
+</script>
+<style>
+  a{cursor: pointer;font-size: 20px;margin-right: 20px;}
+  .strikediag {
+  background: linear-gradient(to left top, transparent 47.75%, currentColor 49.5%, currentColor 50.5%, transparent 52.25%);
+}
+</style>
