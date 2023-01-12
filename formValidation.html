@@ -119,7 +119,9 @@
       }
       else {
         elem.nextElementSibling.innerHTML = msg
-        elem.focus()
+          if(checkValidation ===true)
+              {elem.focus()}
+            
         return false;
       }
     }
