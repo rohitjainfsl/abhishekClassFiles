@@ -55,7 +55,7 @@
 
     form.onsubmit = (e) => {
       e.preventDefault()
-
+    
       const nameExp = /^[a-zA-Z ]{3,20}$/
       const phoneExp = /^[0-9]{10}$/
       const emailExp = /^[a-zA-Z0-9\-\_\.]+\@[a-zA-Z0-9]+\.[a-zA-Z\.]{2,5}$/
@@ -70,21 +70,44 @@
       const radios = document.querySelectorAll("input[type=radio]")
       const select = document.querySelector("select")
       const textarea = document.querySelector("textarea")
+      
+      let checkValidation=true;
+       if (!check(name, nameExp, 'Name must contain alphabets only')) {
+            checkValidation=false;
+       }
+        if (!check(phone, phoneExp, 'Phone must contain exact 10 numbers')) {
+            checkValidation=false;
+       }
+        if (!check(email, emailExp, 'Enter a valid email')) {
+            checkValidation=false;
+       }
+        if (!check2(radios, 'Select gender')) {
+            checkValidation=false;
+       }
+        if (!check3(select, 'Select Course')) {
+            checkValidation=false;
+       }
+        if (!check3(textarea, 'Write your address')) {
+            checkValidation=false;
+       }
+        if(checkValidation==true)
+             form.submit()   
+      
 
-      if (check(name, nameExp, 'Name must contain alphabets only')) {
-        if (check(phone, phoneExp, 'Phone must contain exact 10 numbers')) {
-          if (check(email, emailExp, 'Enter a valid email')) {
-            if (check2(radios, 'Select gender')) {
-              if(check3(select, 'Select Course')){
-                if(check3(textarea, 'Write your address')){
-                  //submit the form
-                  document.querySelector("form").submit()
-                }
-              }
-            }
-          }
-        }
-      }
+//      if (check(name, nameExp, 'Name must contain alphabets only')) {
+//        if (check(phone, phoneExp, 'Phone must contain exact 10 numbers')) {
+//          if (check(email, emailExp, 'Enter a valid email')) {
+//            if (check2(radios, 'Select gender')) {
+//              if(check3(select, 'Select Course')){
+//                if(check3(textarea, 'Write your address')){
+//                  //submit the form
+//                  form.submit()
+//                }
+//              }
+//            }
+//          }
+//        }
+//      }
 
 
     }
@@ -96,7 +119,7 @@
       }
       else {
         elem.nextElementSibling.innerHTML = msg
-        elem.focus()
+        //elem.focus()
         return false;
       }
     }
@@ -120,8 +143,6 @@
       }
 
     }
-
-
 
     function check3(elem, msg){
       if(elem.value === ''){
