@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasks</title>
+</head>
+
+<body>
+  <div id="wrapper">
+    <script>
+        let arr=[88,67,45,33,99,345,5,675,555,34];
+        let smallestNumber=999999
+        let largestNumber=0
+        for(let i=0;i<arr.length;i++){
+            if(smallestNumber > arr[i])
+                smallestNumber = arr[i]
+            if(largestNumber < arr[i])
+                largestNumber = arr[i]
+        }
+        document.write("Smallest Number: "+smallestNumber+'<br>');
+        document.write("Largest Number: "+largestNumber);
+        
+        let digit = '3351356677'
+        const myArray = digit.split("");
+        let response = [];
+        myArray.forEach((number, index) => {
+            if(response[number])
+                response[number]=++response[number]
+            else
+                {
+                    response[number] =1
+                }
+                
+        })
+        
+//        console.log(myArray);
+//        let digit = 3351356677
+//        let digitArr=[];
+//        console.log(digit.split(digit));
+//      // digitArr=digit.split();
+       console.log(response);
+  </script>
+    </div>
+</body>
+
+</html>

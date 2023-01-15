@@ -117,7 +117,6 @@
 
 
 
-
     //PROMISES
 
     // addToCart().function(){generateOrderId()}
@@ -133,12 +132,16 @@
 
     // const result = fetch('https://randomuser.me/api/')
     // console.log(result)
+      
+      fetch('https://randomuser.me/api/')
+      .then((response) => { console.log(response); return response.json() } )
+      .then(function(result){ console.log(result)})
+      .catch((err) => {console.log(err)})
 
-
-    fetch('https://randomuser.me/api/')
-      .then((response) => { console.log("Before data is fetched"); return response.json() })
-      .then((result) => { console.log(result) })
-      .catch((err) => { console.log(err) })
+//    fetch('https://randomuser.me/api/')
+//      .then((response) => { console.log("Before data is fetched"); return response.json() })
+//      .then((result) => { console.log(result) })
+//      .catch((err) => { console.log(err) })
 
 
 
