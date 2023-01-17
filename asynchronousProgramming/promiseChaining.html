@@ -152,36 +152,148 @@
 
 
 
-    const p1 = new Promise((resolve, reject) => {
-      setTimeout(() => resolve("one"), 1000);
-    });
-    const p2 = new Promise((resolve, reject) => {
-      setTimeout(() => resolve("two"), 2000);
-    });
-    const p3 = new Promise((resolve, reject) => {
-      setTimeout(() => resolve("three"), 3000);
-    });
-    const p4 = new Promise((resolve, reject) => {
-      setTimeout(() => resolve("four"), 4000);
-    });
-    const p5 = new Promise((resolve, reject) => {
-      resolve('Hello');
-    });
+    // const p1 = new Promise((resolve, reject) => {
+    //   setTimeout(() => resolve("one"), 1000);
+    // });
+    // const p2 = new Promise((resolve, reject) => {
+    //   setTimeout(() => resolve("two"), 2000);
+    // });
+    // const p3 = new Promise((resolve, reject) => {
+    //   setTimeout(() => resolve("three"), 3000);
+    // });
+    // const p4 = new Promise((resolve, reject) => {
+    //   setTimeout(() => resolve("four"), 4000);
+    // });
+    // const p5 = new Promise((resolve, reject) => {
+    //   resolve('Hello');
+    // });
 
-    // // Using .catch:
-    Promise.all([p1, p2, p3, p4, p5])
-      .then((values) => {
-        console.log(values);
-      })
-      .catch((error) => {
-        console.error(error.message);
-      });
-
-
+    // // // Using .catch:
+    // Promise.all([p1, p2, p3, p4, p5])
+    //   .then((values) => {
+    //     console.log(values);
+    //   })
+    //   .catch((error) => {
+    //     console.error(error.message);
+    //   });
 
 
 
 
+
+    // const p = Promise.all([1, 2, 3]);
+
+
+
+
+    // const p2 = Promise.all([1, 2, 3, Promise.resolve(444)]);
+
+
+
+
+
+    // const p3 = Promise.all([1, 2, 3, Promise.reject(555)]);
+
+
+
+
+    // const pErr = new Promise((resolve, reject) => {
+    //   reject("Always fails");
+    // });
+
+    // const pSlow = new Promise((resolve, reject) => {
+    //   setTimeout(resolve, 500, "Done eventually");
+    // });
+
+    // const pFast = new Promise((resolve, reject) => {
+    //   setTimeout(resolve, 100, "Done quick");
+    // });
+
+    // Promise.any([pErr, pSlow, pFast]).then((value) => {
+    //   console.log(value);
+    // })
+
+
+
+
+    // const failure = new Promise((resolve, reject) => {
+    //   reject("Always fails");
+    // });
+
+    // Promise.any([failure]).catch((err) => {
+    //   console.log(err);
+    // });
+
+
+
+
+
+
+    // function sleep(time, value, state) {
+    //   return new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //       if (state === "fulfill") {
+    //         return resolve(value);
+    //       } else {
+    //         return reject(new Error(value));
+    //       }
+    //     }, time);
+    //   });
+    // }
+
+    // const p1 = sleep(500, "one", "fulfill");
+    // const p2 = sleep(100, "two", "reject");
+
+    // Promise.all([p1, p2]).then((value) => {
+    //   console.log(value);
+    // })
+
+
+    // function sleep(time, value, state) {
+    //   return new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //       if (state === "fulfill") {
+    //         return resolve(value);
+    //       } else {
+    //         return reject(new Error(value));
+    //       }
+    //     }, time);
+    //   });
+    // }
+
+    // const p3 = sleep(1000, "three", "fulfill");
+    // const p4 = sleep(500, "four", "reject");
+
+    // Promise.allSettled([p3, p4]).then(
+    //   (value) => {
+    //     console.log(value);
+    //   },
+    //   (error) => {
+    //     console.log(error)
+    //   }
+    // );
+
+    // const p5 = sleep(500, "five", "fulfill");
+    // const p6 = sleep(100, "six", "reject");
+
+    // Promise.race([p5, p6]).then(
+    //   (value) => {
+
+    //   },
+    //   (error) => {
+    //     console.error(error.message);
+    //   }
+    // );
+
+
+
+    const p1 = Promise.resolve(33)
+    const p2 = new Promise((resolve) => setTimeout(() => resolve(66), 1000))
+    const p13 = 99
+    const p14 = Promise.reject(new Error("an error"))
+
+    Promise.race([p14, p1, p2, p13])
+      .then((values) => console.log(values));
 
 
 
